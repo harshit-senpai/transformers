@@ -33,4 +33,9 @@ export const apiClient = {
 
     return response.json();
   },
+  async getDocs() {
+    const response =  await fetch(`${NEXT_PUBLIC_API_URL}/api/documents/get-document`)
+    
+    return response.json();
+  }
 };

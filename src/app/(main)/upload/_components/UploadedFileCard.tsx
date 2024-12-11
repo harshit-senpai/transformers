@@ -19,10 +19,10 @@ export function UploadedFilesCard({
   onConvert: (file: any) => void;
 }) {
   return (
-    <Card>
+    <Card className="bg-background/40">
       <CardHeader>
-        <CardTitle>Uploaded files</CardTitle>
-        <CardDescription>View the uploaded files here</CardDescription>
+        <CardTitle>Selected files</CardTitle>
+        <CardDescription>View the selected files here</CardDescription>
       </CardHeader>
       <CardContent>
         {uploadedFiles.length > 0 ? (
@@ -54,7 +54,7 @@ export function UploadedFilesCard({
                   {!file.isMachineReadable && (
                     <button
                       onClick={() => onConvert(file.key)}
-                      className="absolute bottom-2 right-2 bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded text-sm"
+                      className="absolute bottom-2 right-2 bg-white hover:bg-white/80 text-white px-3 py-1 rounded text-sm"
                     >
                       Convert
                     </button>
