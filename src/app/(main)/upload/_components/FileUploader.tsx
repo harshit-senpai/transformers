@@ -24,6 +24,7 @@ interface FileUploaderProps extends React.HTMLAttributes<HTMLDivElement> {
   maxSize?: DropzoneProps["maxSize"];
   maxFileCount?: DropzoneProps["maxFiles"];
   multiple?: boolean;
+  convertingFileId?: string | null;
   disabled?: boolean;
 }
 
@@ -34,7 +35,7 @@ export function FileUploader(props: FileUploaderProps) {
     onUpload,
     progresses,
     accept = {
-      ["application/pdf"]: [".pdf", ".jpeg", ".png", "jpg"],
+      ["application/pdf"]: [],
     },
     maxSize = 1024 * 1024 * 2,
     maxFileCount = 1,
@@ -107,16 +108,16 @@ export function FileUploader(props: FileUploaderProps) {
     onValueChange?.(newFiles);
   }
 
-  React.useEffect(() => {
-    return () => {
-      if (!files) return;
-      files.forEach((file) => {
-        if (isFileWithPreview(file)) {
-          URL.revokeObjectURL(file.preview);
-        }
-      });
-    };
-  }, []);
+  // React.useEffect(() => {
+  //   return () => {
+  //     if (!files) return;
+  //     files.forEach((file) => {
+  //       if (isFileWithPreview(file)) {
+  //         URL.revokeObjectURL(file.preview);
+  //       }
+  //     });
+  //   };
+  // }, []);
 
   const isDisabled = disabled || (files?.length ?? 0) >= maxFileCount;
 
@@ -182,7 +183,7 @@ export function FileUploader(props: FileUploaderProps) {
           </div>
         )}
       </Dropzone>
-      {files?.length ? (
+      {/* {files?.length ? (
         <ScrollArea className="h-fit w-full px-3 mt-4">
           <div className="flex max-h-48 flex-col gap-4">
             {files?.map((file, index) => (
@@ -195,7 +196,7 @@ export function FileUploader(props: FileUploaderProps) {
             ))}
           </div>
         </ScrollArea>
-      ) : null}
+      ) : null} */}
     </div>
   );
 }
@@ -206,51 +207,51 @@ interface FileCardProps {
   progress?: number;
 }
 
-function FileCard({ file, progress, onRemove }: FileCardProps) {
-  return (
-    <div className="relative flex items-center gap-2.5 mt-8">
-      <div className="flex flex-1 gap-2.5">
-        {isFileWithPreview(file) ? <FilePreview file={file} /> : null}
-        <div className="flex w-full flex-col gap-2">
-          <div className="flex flex-col gap-px">
-            <p className="line-clamp-1 text-sm font-medium text-foreground/80">
-              {file.name}
-              {file.isMachineReadable ? (
-                <span className="ml-2 inline-block px-2 py-1 text-xs font-medium text-green-800 bg-green-200 rounded">
-                  Machine Readable
-                </span>
-              ) : (
-                <span className="ml-2 inline-block px-2 py-1 text-xs font-medium text-red-800 bg-red-200 rounded">
-                  Not Machine Readable
-                </span>
-              )}
-            </p>
-            <p className="text-xs text-muted-foreground">
-              {formatBytes(file.size)}
-            </p>
-          </div>
-          {progress ? <Progress value={progress} /> : null}
-        </div>
-      </div>
-      <div className="flex items-center gap-2">
-        <Button
-          type="button"
-          variant="outline"
-          size="icon"
-          className="size-7"
-          onClick={onRemove}
-        >
-          <X className="size-4" aria-hidden="true" />
-          <span className="sr-only">Remove file</span>
-        </Button>
-      </div>
-    </div>
-  );
-}
+// function FileCard({ file, progress, onRemove }: FileCardProps) {
+//   return (
+//     <div className="relative flex items-center gap-2.5 mt-8">
+//       <div className="flex flex-1 gap-2.5">
+//         {isFileWithPreview(file) ? <FilePreview file={file} /> : null}
+//         <div className="flex w-full flex-col gap-2">
+//           <div className="flex flex-col gap-px">
+//             <p className="line-clamp-1 text-sm font-medium text-foreground/80">
+//               {file.name}
+//               {file.isMachineReadable ? (
+//                 <span className="ml-2 inline-block px-2 py-1 text-xs font-medium text-green-800 bg-green-200 rounded">
+//                   Machine Readable
+//                 </span>
+//               ) : (
+//                 <span className="ml-2 inline-block px-2 py-1 text-xs font-medium text-red-800 bg-red-200 rounded">
+//                   Not Machine Readable
+//                 </span>
+//               )}
+//             </p>
+//             <p className="text-xs text-muted-foreground">
+//               {formatBytes(file.size)}
+//             </p>
+//           </div>
+//           {progress ? <Progress value={progress} /> : null}
+//         </div>
+//       </div>
+//       <div className="flex items-center gap-2">
+//         <Button
+//           type="button"
+//           variant="outline"
+//           size="icon"
+//           className="size-7"
+//           onClick={onRemove}
+//         >
+//           <X className="size-4" aria-hidden="true" />
+//           <span className="sr-only">Remove file</span>
+//         </Button>
+//       </div>
+//     </div>
+//   );
+// }
 
-function isFileWithPreview(file: File): file is File & { preview: string } {
-  return "preview" in file && typeof file.preview === "string";
-}
+// function isFileWithPreview(file: File): file is File & { preview: string } {
+//   return "preview" in file && typeof file.preview === "string";
+// }
 
 interface FilePreviewProps {
   file: File & { preview: string };

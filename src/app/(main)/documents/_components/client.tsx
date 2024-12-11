@@ -3,7 +3,7 @@ import { Separator } from "@/components/ui/separator";
 import { columns } from "./Column";
 import { DataTable } from "@/components/DataTable";
 
-export const DocumentClient = ({ data }) => {
+export const DocumentClient = ({ data }:any) => {
   return (
     <>
       <div className="flex items-center justify-between">
