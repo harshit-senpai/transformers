@@ -5,6 +5,7 @@ import {
   FileText,
   History,
   LayoutDashboard,
+  MessageSquare,
   Settings,
   Upload,
   Users,
@@ -25,6 +26,11 @@ export const SidebarItems = [
     title: "Documents",
     url: "/documents",
     icon: FileText,
+  },
+  {
+    title: "Chat",
+    url: "/chat",
+    icon: MessageSquare,
   },
   {
     title: "Analytics",
