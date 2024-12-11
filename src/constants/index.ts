@@ -5,8 +5,12 @@ import {
   FileText,
   History,
   LayoutDashboard,
+  LucideGitGraph,
   MessageSquare,
   Settings,
+  SmileIcon,
+  Stethoscope,
+  Text,
   Upload,
   Users,
 } from "lucide-react";
@@ -64,5 +68,28 @@ export const DashboardCards = [
     cardTitle: "Total Users",
     cardDescription: "all the registered officials of the ministry",
     icon: Users,
+  },
+];
+
+export const AnalyticsButton = [
+  {
+    title: "Sentimental",
+    icon: SmileIcon,
+  },
+  {
+    title: "Predictive",
+    icon: LucideGitGraph,
+  },
+  {
+    title: "Chart",
+    icon: ChartBar,
+  },
+  {
+    title: "Descriptive",
+    icon: Text,
+  },
+  {
+    title: "Diagnostic",
+    icon: Stethoscope,
   },
 ];

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { FileText } from "lucide-react";
+import { FileText, Loader2 } from "lucide-react";
 
 import {
   Card,
@@ -29,21 +29,11 @@ export function UploadedFilesCard({
           <ScrollArea className="pb-4">
             <div className="flex w-max space-x-2.5">
               {uploadedFiles.map((file: any) => (
-                <div key={file.key} className="relative aspect-video w-64">
-                  {file.type === "application/pdf" ? (
-                    <div className="w-full h-full flex items-center justify-center bg-muted rounded-md">
-                      <FileText className="w-16 h-16 text-muted-foreground" />
-                    </div>
-                  ) : (
-                    <Image
-                      src={file.url}
-                      alt={file.name}
-                      fill
-                      sizes="(min-width: 640px) 640px, 100vw"
-                      loading="lazy"
-                      className="rounded-md object-cover"
-                    />
-                  )}
+                <div key={file.key} className="relative aspect-video w-72">
+                  <div className="w-full h-full flex items-center justify-center bg-muted rounded-md">
+                    <FileText className="w-16 h-16 text-muted-foreground" />
+                  </div>
+
                   <div
                     className={`absolute top-2 right-2 px-2 py-1 rounded ${
                       file.isMachineReadable ? "bg-green-500" : "bg-red-500"
@@ -54,11 +44,14 @@ export function UploadedFilesCard({
                   {!file.isMachineReadable && (
                     <button
                       onClick={() => onConvert(file.key)}
-                      className="absolute bottom-2 right-2 bg-white hover:bg-white/80 text-white px-3 py-1 rounded text-sm"
+                      className="absolute bottom-10 right-2 bg-blue-500 hover:bg-blue-500/80 text-white px-3 py-1 rounded text-sm"
                     >
-                      Convert
+                     Convert
                     </button>
                   )}
+                  <p className="text-sm text-muted-foreground mt-2 text-center truncate px-2">
+                    {file.fileName}
+                  </p>
                 </div>
               ))}
             </div>

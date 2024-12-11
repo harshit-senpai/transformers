@@ -30,6 +30,7 @@ export function useUploadFile({
     {}
   );
   const [isUploading, setIsUploading] = React.useState(false);
+  const [convertingFileId, setConvertingFileId] = React.useState<string | null>(null);
 
   async function onUpload(files: File[]) {
     setIsUploading(true);
@@ -70,11 +71,13 @@ export function useUploadFile({
   }
 
   const convertFile = async (fileKey: string) => {
+    setConvertingFileId(fileKey);
     try {
       const response = await fetch("http://localhost:8000/api/convert", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ fileKey }),
+         credentials: 'include'
       });
 
       const data = await response.json();
@@ -89,6 +92,8 @@ export function useUploadFile({
       }
     } catch (err) {
       toast.error(getErrorMessage(err));
+    } finally {
+      setConvertingFileId(null);
     }
   };
 
