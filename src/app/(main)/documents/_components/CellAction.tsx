@@ -22,10 +22,13 @@ export const CellAction = ({ data }: CellActionProps) => {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuLabel>Analysis</DropdownMenuLabel>
           <DropdownMenuItem onClick={() => router.push(`/documents/${data.id}/analytics`)}>
             <GitGraph className="mr-2 h-4 w-4" />
             Analytics
+          </DropdownMenuItem>
+          <DropdownMenuItem onClick={() => router.push(`/documents/${data.id}`)}>
+            <Eye className="mr-2 h-4 w-4" />
+            View
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

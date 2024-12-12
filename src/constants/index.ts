@@ -73,23 +73,23 @@ export const DashboardCards = [
 
 export const AnalyticsButton = [
   {
-    title: "Sentimental",
+    title: "sentiment",
     icon: SmileIcon,
   },
   {
-    title: "Predictive",
+    title: "predictive",
     icon: LucideGitGraph,
   },
   {
-    title: "Chart",
+    title: "chart",
     icon: ChartBar,
   },
   {
-    title: "Descriptive",
+    title: "descriptive",
     icon: Text,
   },
   {
-    title: "Diagnostic",
+    title: "diagnostic",
     icon: Stethoscope,
   },
 ];

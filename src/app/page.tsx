@@ -186,7 +186,7 @@ export default function LandingPage() {
             </span>
           </h1>
           <p className="text-gray-900 text-sm sm:text-base max-w-md sm:max-w-2xl mb-6 sm:mb-8 leading-relaxed">
-            Serve dynamic landing page content based on users' UTM, geolocation,
+            Serve dynamic landing page content based on users&apos; UTM, geolocation,
             or device and improve quality scores, engagement, and conversion
             rates.
           </p>

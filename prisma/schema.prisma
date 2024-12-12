@@ -18,10 +18,18 @@ enum UserRole {
   USER
 }
 
+enum OrganizationType {
+  HEALTH
+  FINANCE
+  DEFENSE
+  EDUCATION
+}
+
 model User {
   id       String   @id @default(auto()) @map("_id") @db.ObjectId
   name     String
   email    String   @unique
   password String
   role     UserRole @default(USER)
+  organization OrganizationType?
 }
