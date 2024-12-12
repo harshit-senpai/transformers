@@ -18,11 +18,11 @@ export const apiClient = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Accept: "application/json",
       },
       credentials: "include",
       body: JSON.stringify(data),
     });
-
     return response.json();
   },
   async logout() {
@@ -34,8 +34,35 @@ export const apiClient = {
     return response.json();
   },
   async getDocs() {
-    const response =  await fetch(`${NEXT_PUBLIC_API_URL}/api/documents/get-document`)
-    
-    return response.json();
-  }
+    const response = await fetch(
+      `${NEXT_PUBLIC_API_URL}/api/documents/get-document`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        credentials: "include",
+      }
+    );
+
+    const data = await response.json();
+    return data;
+  },
+  async getDoc() {
+    const response = await fetch(
+      `${NEXT_PUBLIC_API_URL}/api/documents/get-doc`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json",
+        },
+        credentials: "include",
+      }
+    );
+
+    const data = await response.json();
+    return data;
+  },
 };

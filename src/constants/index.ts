@@ -93,3 +93,22 @@ export const AnalyticsButton = [
     icon: Stethoscope,
   },
 ];
+
+export const selectContent = [
+  {
+    value: "kn",
+    label: "kannada",
+  },
+  {
+    value: "hi",
+    label: "Hindi",
+  },
+  {
+    value: "ta",
+    label: "Tamil",
+  },
+  {
+    value: "te",
+    label: "Telugu",
+  },
+];

@@ -34,7 +34,7 @@ export const AppSidebar = () => {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>Organization Applications</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {SidebarItems.map((item) => (
